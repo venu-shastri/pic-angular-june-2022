@@ -9,6 +9,9 @@ import { CalculatorService } from './services/calculator.service';
 import { ConsoleLoggerService } from '../services/consoleLogger.service';
 import { ApiLoggerService } from '../services/apiLogger.service';
 import { ILogger } from '../services/iLogger.contract';
+import { SearchComponent } from './components/search/search.component';
+import { SearchService } from '../services/search.service';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 
 
 
@@ -16,18 +19,22 @@ import { ILogger } from '../services/iLogger.contract';
   declarations: [
     BasicCalculatorComponent,
     CalculatorComponent,
-    ComputationResultSummaryComponent
+    ComputationResultSummaryComponent,
+    SearchComponent,
+    SearchResultComponent
   ],
   imports: [
     CommonModule,
     WidgetsModule,
     FormsModule
   ],
-  exports:[BasicCalculatorComponent],
+  exports:[BasicCalculatorComponent,SearchComponent,SearchResultComponent],
   providers:[
     {provide:CalculatorService,useClass:CalculatorService} ,//Service Registeration
     {provide:"loggerService",useClass:ApiLoggerService},
     {provide:"apiAddress",useValue:"http://pic.com/log/v1"}
+   // SearchService // {provide:SearchService,useClass:SearchService}
+    
     //{provide:"apiAddressV2",useValue:"http://pic.com/log/v2"}
   ]
 })
