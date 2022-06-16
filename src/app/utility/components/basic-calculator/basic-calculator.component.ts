@@ -1,11 +1,18 @@
-import { Component, OnInit ,ViewChild} from '@angular/core';
+import { Component, Inject, OnInit ,ViewChild} from '@angular/core';
+import { ApiLoggerService } from 'src/app/services/apiLogger.service';
+import { ConsoleLoggerService } from 'src/app/services/consoleLogger.service';
+import { ILogger } from 'src/app/services/iLogger.contract';
 import { ComputationResultModel } from '../../models/computationResult.model';
 import { ComputationResultSummaryComponent } from '../computation-result-summary/computation-result-summary.component';
 
 @Component({
   selector: 'basic-calculator-component',
   templateUrl: './basic-calculator.component.html',
-  styleUrls: ['./basic-calculator.component.css']
+  styleUrls: ['./basic-calculator.component.css'],
+  //providers:[
+    //{provide:"loggerService",useClass:ApiLoggerService},
+    //{provide:"apiAddress",useValue:"http://pic.com/log/v2"}
+  //]
 })
 export class BasicCalculatorComponent implements OnInit {
 
@@ -15,7 +22,7 @@ export class BasicCalculatorComponent implements OnInit {
   @ViewChild(ComputationResultSummaryComponent)
   computationChild!:ComputationResultSummaryComponent
 
-  constructor() { 
+  constructor(@Inject("loggerService") public logger:ILogger) { 
 
    
   }
@@ -28,7 +35,7 @@ export class BasicCalculatorComponent implements OnInit {
   onResultComputedHandler(data:ComputationResultModel):void{
 
   //this.result=data;
- // console.log(this.result);
+ this.logger.write(data.toString());
  this.computationChild.resultSummary=data;
   }
   
