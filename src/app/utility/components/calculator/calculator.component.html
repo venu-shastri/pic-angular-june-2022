@@ -1,0 +1,35 @@
+<table>
+    <tr>
+        <td>
+            <label-component [message]="'Operand1:'"></label-component>
+        </td>
+        <td>
+            <input #operandOneTextBox type="text" [(ngModel)]="operand1"/>
+        </td>
+    </tr>
+    <tr>
+      <td>
+          <label-component [message]="'Operand2:'"></label-component>
+      </td>
+      <td>
+          <input  #operandTwoTextBox type="text"  [(ngModel)]="operand2" type="text" />
+      </td>
+  </tr>
+  
+  <tr>
+      <td>
+          <label-component [message]="'Operations:'"></label-component>
+      </td>
+      <td>
+          <button (click)="add()">Add</button> <button (click)="sub()">Sub</button>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          <label-component [message]="'Clear Contents:'"></label-component>
+      </td>
+      <td>
+          <button >Clear</button>
+      </td>
+  </tr>
+</table>
