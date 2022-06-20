@@ -21,7 +21,7 @@ import { SearchResultComponent } from './components/search-result/search-result.
     CalculatorComponent,
     ComputationResultSummaryComponent,
     SearchComponent,
-    SearchResultComponent
+   SearchResultComponent
   ],
   imports: [
     CommonModule,
